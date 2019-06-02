@@ -3,6 +3,8 @@ import 'package:lol_stats/constants/ApiConstants.dart';
 import 'package:lol_stats/model/Champion.dart';
 import 'package:lol_stats/repository/ChampionsRepository.dart';
 
+import 'champions_info_widget.dart';
+
 class ChampionsListWidget extends StatelessWidget {
 
   @override
@@ -21,8 +23,14 @@ class ChampionsListWidget extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell (
                     child: Card(
-                        child: Image.network(IMAGE_LINK + list[index].imageLink)
-                    )
+                        child: Image.network(AVATAR_LINK + list[index].avatar)
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChampionsInfoWidget(list[index])),
+                      );
+                    },
                   );
                 }
             );
@@ -37,14 +45,3 @@ class ChampionsListWidget extends StatelessWidget {
   }
 
 }
-
-
-/*
-GridView.count(
-        crossAxisCount: 2,
-        children: List.generate(100, (index) {
-      return Center(
-        child: Image.network(
-        ),
-      );
- */

@@ -6,7 +6,7 @@ class Champion {
   factory Champion.fromJson(Map<String, dynamic> data) {
     return Champion(
         data["name"],
-        data["image"]["full"],
+        data["name"]+"_0.jpg",
         data["image"]["full"]
     );
   }
